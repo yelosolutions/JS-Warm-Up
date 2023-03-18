@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+.root{
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-wite: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #494536;
+    --color-light: rbga(132,139,200,0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    
+    --card-boarder-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-raduis-3: 1.2rem;
+    
+    --card-padding: 1.8rem;
+    --padding: 1.2rem;
+
+    box-shadow: 0 2rem 3rem var(--color-light);
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: var(--color-background)
+}
+.container{
+    background: var(--color-background)
+}
+
+.top{
+    background: #fff;
+}
+.yellow{
+    color: darkgoldenrod;
+}
+
+.sidebar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: var(--color-background);
+}
+
+a {
+    color: var(--color-dark);
+    display: block;
+    text-decoration: none; /* removes the underline from the hyperlink */
+    background-color: #f8f9fa; /* sets the background color of the hyperlink */
+    padding: 5px 10px 2px 5px; /* sets the padding around the hyperlink */
+}
+
+a:hover {
+    color: #d89f23; /* sets the color of the hyperlink when hovered over */
+    background-color: #fff5d4; /* sets the background color of the hyperlink when hovered over */
+}
