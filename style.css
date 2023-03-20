@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
-.root{
+:root {
     --color-primary: #7380ec;
     --color-danger: #ff7782;
     --color-success: #41f1b6;
     --color-warning: #ffbb55;
-    --color-wite: #fff;
+    --color-white: #fff;
     --color-info-dark: #7d8da1;
     --color-info-light: #dce1eb;
     --color-dark: #494536;
@@ -14,7 +14,7 @@
     --color-dark-variant: #677483;
     --color-background: #f6f6f9;
     
-    --card-boarder-radius: 2rem;
+    --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
     --border-radius-2: 0.8rem;
     --border-raduis-3: 1.2rem;
@@ -23,7 +23,6 @@
     --padding: 1.2rem;
 
     box-shadow: 0 2rem 3rem var(--color-light);
-
 }
 
 *{
@@ -45,37 +44,217 @@ body{
     width: 100vw;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: var(--color-background)
+    font-size: 0.88rem;
+    background: #f6f6f9;
+    user-select: none;
+    overflow-x: hidden;
 }
 .container{
-    background: var(--color-background)
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 15.5rem auto 23rem;
 }
 
-.top{
-    background: #fff;
-}
-.yellow{
-    color: darkgoldenrod;
+aside {
+    height: 100vh;
 }
 
-.sidebar {
+aside .top {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+    border-radius: 6px;
+    padding: 0.6rem;
+
+}
+
+aside .logo {
+    display: flex;
+    gap: 0.6rem;
+} 
+
+aside .logo img {
+    height: 2.5rem;
+    width: 2.5rem; 
+}
+
+aside .close {
+    display: none;
+}
+
+aside .sidebar {
     position: relative;
-    top: 0;
-    left: 0;
-    width: 250px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-top: 3rem;
+    border-radius: 6px;
+    height: 86vh;
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    height: 4rem;
+    position: relative;
+    border-radius: 6px;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+}
+
+aside .sidebar a:last-child{
+    position: absolute;
+    bottom: 2rem;
+    width: 87%;
+}
+
+aside .sidebar a.active{
+    background: var(--color-light);
+    color: var(--color-primary);
+    margin-left: 0;
+
+}
+
+aside .sidebar a.active:before {
+    content: "";
+    width: 6px;
+    background: var(--color-primary);
     height: 100%;
-    background-color: var(--color-background);
 }
 
-a {
-    color: var(--color-dark);
+aside .sidebar a:hover {
+    color: var(--color-primary);
+}
+
+
+.main{
+height: 100vh;
+color: var(--color-info-dark)
+}
+
+.main .main-brand{
+    margin-top: 1.4rem;
+    margin-left: 2rem;
+}
+.main .top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2.4rem;
+    height: 16rem;
+    gap: 1rem;
+}
+.main .top .widget{
+    align-items: center;
+    margin-top: 2rem;
+    width: 18rem;
+    height: 14rem;
+    border: 1px hidden ;
+    background: white;
+    padding: 0.6rem;
+    border-radius: 15px;
+    margin-right: 1rem;
+    box-shadow: var(box-)
+}
+
+.main .orders{
+    background: white;
     display: block;
-    text-decoration: none; /* removes the underline from the hyperlink */
-    background-color: #f8f9fa; /* sets the background color of the hyperlink */
-    padding: 5px 10px 2px 5px; /* sets the padding around the hyperlink */
+    justify-content: space-between;
+    margin: 2.4rem;
+    height: 36rem;
+    padding: 1rem;
+    border-radius: 15px;
+    gap: 1rem;
+
+}
+.main .orders tr:hover{
+    color: #d89f23;
 }
 
-a:hover {
-    color: #d89f23; /* sets the color of the hyperlink when hovered over */
-    background-color: #fff5d4; /* sets the background color of the hyperlink when hovered over */
+
+img {
+    display: block;
+    width: 100%
 }
+
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.primary {
+    color: var(--color-primary);
+};
+
+.success {
+    color: var(--color-success);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+.muted_text {
+    color: var(--color-info-dark);
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+b {
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+p {
+    color: var(--color-dark-variant);
+    font-weight: 100;
+}
+
+.small {
+    font-size: 0.75rem;
+}
+
+
+
+
+
+
