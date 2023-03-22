@@ -77,6 +77,14 @@ aside .logo {
     gap: 0.6rem;
 } 
 
+aside .logo span{
+    display: block;
+}
+aside .logo span.primary{
+    text-align: center;
+    justify-content: center;
+}
+
 aside .logo img {
     height: 3rem;
     width: 3rem; 
@@ -240,33 +248,37 @@ margin-top: 1.4rem;
     stroke-width: 14;
     stroke-linecap: round;
     transform: translate(5px, 5px);
-    stroke-dasharray: 110;
-    stroke-dashoffset: 90;
 }
 
+.main .insights .sales .progress svg circle{
+    stroke-dasharray: 170;
+    stroke-dashoffset: 0;
+}
 .main .insights .expenses .progress svg circle{
-    stroke-dasharray: 110;
-    stroke-dashoffset: 74;
+    stroke-dasharray: 130;
+    stroke-dashoffset: 0;
 }
 .main .insights .income .progress svg circle{
-    stroke-dasharray: 110;
-    stroke-dashoffset: 40;
+    stroke-dasharray: 80;
+    stroke-dashoffset: 0;
 }
 
-.main .orders{
-    background: white;
+.main .insights .progress .number{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content:center;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+}
+
+.main .insights small{
+    margin-top: 1.5rem;
     display: block;
-    justify-content: space-between;
-    margin: 2.4rem;
-    height: 36rem;
-    padding: 1rem;
-    border-radius: 15px;
-    gap: 1rem;
+}
 
-}
-.main .orders tr:hover{
-    color: #d89f23;
-}
 
 
 img {
