@@ -125,61 +125,101 @@
                 <h2>Recent Orders</h2>
                 <table>
                     <thead>
-                        <th>Product/Service Name</th><th>Payment</th><th>Status</th>
+                        <tr>
+                            <th>Product/Service Name</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                        </tr>           
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Ordering System</td><td>Paypal</td><td class="primary">Paid</td>
+                            <td>Ordering System</td>
+                            <td>Paypal</td>
+                            <td class="primary">Paid</td>
                         </tr>
                         <tr>
-                            <td>Blog Website</td><td>Paypal</td><td class="primary">Paid</td>
+                            <td>Blog Website</td>
+                            <td>Paypal</td>
+                            <td class="primary">Paid</td>
                         </tr>
                         <tr>
-                            <td>Laundry Services Website</td><td>Western Union</td><td class="primary">Paid</td>
+                            <td>Laundry Website</td>
+                            <td>Western Union</td>
+                            <td class="primary">Paid</td>
                         </tr>
                         <tr>
-                            <td>School System</td><td>Paypal</td><td class="danger">Pending</td>
+                            <td>School System</td>
+                            <td>Paypal</td>
+                            <td class="danger">Pending</td>
                         </tr>
                     </tbody>
                 </table>
+                <a href="#"> Show All</a>
             </div>
-            <a href="#"> Show All</a>
         </div>
         <div class="right">
             <div class="top">
-                <div class="profile"> 
-                    <span>
-                        <h4>Jay</h4>
-                        <h4>Admin</h4>
-                    </span>
-                    <img src="./jay.jpg" alt="supposed to be my picture" class="normal-dp">
+                <button id="menu-btn"><span class="material-icons-sharp">menu</span></button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">nightlight</span>
                 </div>
+                
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey <b>Jay</b><small>Admin</small></p>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="./jay.jpg" alt="supposed to be my picture" >
+                    </div>
+                </div>
+            </div>
+            <div class="recent-updates">
+                <h2>Recent Updates</h2>
                 <div class="updates">
-                    <div class="comments">
-                        <span>
-                            <img src="./jay.jpg" alt="smaller dp" class="small-dp">
-                            <b>Jay</b>
-                            <p>I really appreciate the work.</p>
-                        </span>
-                        
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./jay.jpg" alt="supposed to be jay's picture">
+                        </div>
+                        <div class="message">
+                            <p><b>Jay</b>Is yet to receive...</p>
+                        </div>
                     </div>
-                    <div class="comments">
-                        <span>
-                            <img src="./Jane.jpg" alt="smaller dp" class="small-dp">
-                            <b>Jane</b>
-                            <p>The market is crushing!</p>
-                        </span>
-                        
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./Jane.jpg" alt="supposed to be jane's picture">
+                        </div>
+                        <div class="message">
+                            <p><b>Jane</b>Is yet to receive...</p>
+                        </div>
                     </div>
-                    <div class="comments">
-                        <span>
-                            <img src="./ken.jpg" alt="smaller dp" class="small-dp">
-                            <b>Ken</b>
-                            <p>There's a new photoshop template...</p>
-                        </span>
-                        
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./ken.jpg" alt="supposed to be ken's picture">
+                        </div>
+                        <div class="message">
+                            <p><b>Ken</b>Has ordered ...</p>
+                        </div> 
                     </div>
+                    <div class="open"><a href="#"><small> Open Messages</small></a></div>
                 </div>
+                
+            </div>
+            <div class="sales-analytics">
+                <h2>Sales Analytics</h2>
+                <div class="online-orders">
+                    <span class="material-icons-sharp">shopping_basket</span>
+                    <h3>Online Orders</h3>
+                </div>
+                <div class="online-orders">
+                    <span class="material-icons-sharp">store</span>
+                    <h3>Offline Orders</h3>
+                </div>
+                <div class="online-orders">
+                    <span class="material-icons-sharp">person_add</span>
+                    <h3>New Customer</h3>
+                </div>
+
             </div>
         </div>
     </div>
