@@ -14,7 +14,7 @@ for (var i = 0; i < word.length; i++){
 }
 var remainingLetters = word.length;
 
-var allowedGuesses = 4;
+var allowedGuesses = 5;
 while ( remainingLetters > 0 && allowedGuesses > 0){
     alert("Fill in the blank spaces.\n" + answerArray.join(" "));
     var guess = prompt("Guess a letter, or click cancel to stop playing");
@@ -31,10 +31,6 @@ while ( remainingLetters > 0 && allowedGuesses > 0){
             }       
         }
         allowedGuesses--;
-        if (allowedGuesses === 0){
-            alert("Too many guesses");
-            break;
-        }
     }
 }
 
