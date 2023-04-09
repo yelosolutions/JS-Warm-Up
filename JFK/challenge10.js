@@ -7,11 +7,18 @@ they’re different.
 */
 
 var areArraysSame = (array1, array2) => {
-    for (var i = 0; i < array1.length; i++){
-        if (array1.length === array2.length && array1[i] === array2[i]){
-            return true;
-        }
-        return false;
+    var answerArray = [];
+    if (array1.length !== array2.length){
+        return "The array sizes are different";
     }
-};
+    for (var i = 0; i < array1.length; i++) {
+        var answer = array1[i] === array2[i];
+        answerArray.push(answer);
+        if (answerArray[i] != true){
+            return false;
+        }
+    }
+    return true;
+    
+}
 console.log(areArraysSame([1, 2, 3], [1, 2, 3]));
