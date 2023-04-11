@@ -27,7 +27,7 @@ for (var i = 0; i < word.length; i++){
 var remainingLetters = word.length;
 
 //specifies the number of allowed guesses
-var allowedGuesses = 5;
+var allowedGuesses = 10;
 
 //the game loop
 while ( remainingLetters > 0 && allowedGuesses > 0){
@@ -52,13 +52,33 @@ while ( remainingLetters > 0 && allowedGuesses > 0){
 
 var playerAnswer = answerArray.join("");
 
+var areAnswersSame = (ans1, ans2) => {
+    if (ans1.length !== ans2.length){
+        return "The player's answer and the actual word have different sizes.";
+    }
+    for (var k = 0; k < word.length; k++) {
+        var result = ans1[k] === ans2[k];
+        if (result !== true){
+            return false;
+        }
+    }
+    return true;
+    
+}
+
+
+var decision = areAnswersSame(playerAnswer, word);
+
+
+console.log(playerAnswer);
+console.log(decision);
+
 //displays the answers provided by the player
-alert(playerAnswer);
 
-if (playerAnswer.length === word.length){
-    //congratulates the player and displays the actual word 
-    alert("Congratulations! The word was: " + word + "!!!");
+if (decision === true){
+    //congratulates the player and displays the actual word
+    alert("Congratulations! The actual word was: " + word);
+}else {
+    //displays the actual word 
+    alert("Your word is: " + playerAnswer + ", but the actual word was: " + word );
 };
-
-//displays the actual word 
-alert("Your word is: " + playerAnswer + ", but the actual word was: " + word );
