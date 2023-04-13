@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing with the dom</title>
+</head>
+<body>
+    <h1 id="main-heading" onclick=changeHeadingText()>Hello World</h1>
+
+    <script>
+        var changeHeadingText = () => {
+            var headingElement = document.getElementById("main-heading");
+            var newHeadingText = prompt("Please try to change the heading");
+            headingElement.innerHTML = newHeadingText;
+            return headingElement;
+        }
+    </script>
+</body>
+</html>
