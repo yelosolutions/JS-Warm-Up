@@ -8,13 +8,51 @@
 </head>
 <body>
     <h1 id="main-heading">Hello World</h1>
+    <h2> I have to do this</h2>
+    <p> This must look different</p>
+
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script>
+    /*
+        The $ function takes one argument, called a selector string, 
+        which tells jQuery which element or elements to select from the DOM tree.
+        In this case, we entered "#main-heading" as the argument.
+        The # character in a selector string means “ID,” so our selector string 
+        "#main-heading" means “the element with an id of main-heading.”
+        The $ function returns a jQuery object that represents the elements you selected
+
+    */
+    //changes the h1 heading to user's input
     var changeMainHeading = () => {
         var newHeadingText = prompt("Please enter a heading that you would like");
         return $("#main-heading").text(newHeadingText);
     }
+
     changeMainHeading();
+    
+    //lists hobbies provided by user's input
+    var nameHobbies = () => { 
+        for (var i = 0; i < 3; i++){
+            var hobby = prompt("What are some of your hobbies? Mention one");
+            var hobbies =  $("body").append("<p>"+ hobby + "</p>");
+        }
+        return hobbies;
+    }
+    nameHobbies();
+
+    /*
+    The slideUp method makes elements disappear by sliding them up, 
+    and slideDown makes them reappear by sliding them down.
+    */
+    //$("h1").slideUp(3000).slideDown(2000);
+    $("h2").hide().fadeIn(2000);
+    //$("h2").fadeOut(2000);
+    /*
+    The fadeOut makes all h1 or p elements disappear smoothly over 3seconds
+    The fadeIn animation makes an invisible element fade back in.
+    */
+    $("h1").hide(3000);
+    $("h1").slideDown(2000);
     </script>
 </body>
 </html>
