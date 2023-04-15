@@ -4,11 +4,12 @@ regular pauses, or intervals
 */
 
 var counter = 0;
-while (counter < 10){
-    var printMessage = () => {
+
+var printMessage = () => {
         console.log(counter + " seconds have passed");
         counter++;
     }
-    var intervalId = setInterval(printMessage, 1000);
-}
+var intervalId = setInterval(printMessage, 1000);
+
 clearInterval(intervalId);
+
