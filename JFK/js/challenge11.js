@@ -18,7 +18,7 @@ for(var i = 0; i < myFriends.length; i++){
     //Using the hide method followed by the fadeIn method to fade in each name.
     $("p").hide().fadeIn(2000);
 };
-""
+
 $("p").append(" smells");
 
 /*
@@ -28,7 +28,9 @@ with id 'main-heading'
 var newHeadingText = "My friends";
 $("#main-heading").text(newHeadingText);
 
-$("h2")
+$("h2").fadeOut(3000).delay(5000).fadeIn(2000);
+
+$("h3").fadeTo(2000, 0.3);
 
 /*
 A loop to flash h1 using  fadeOut and fadeIn over different 
