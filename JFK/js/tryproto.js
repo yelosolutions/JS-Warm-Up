@@ -27,8 +27,8 @@ Car.prototype.draw = function () {
 }
 
 //move the car object 5px to the Right direction 
-Car.prototype.moveRight = function (speed) {
-    this.speed = speed;
+Car.prototype.moveRight = function (distance) {
+    this.speed = distance;
     this.x += this.speed;
     this.carElement.css({
         left: this.x,
@@ -38,8 +38,8 @@ Car.prototype.moveRight = function (speed) {
 
 
 //move the car object 5px to the Left direction 
-Car.prototype.moveLeft = function (speed) {
-    this.speed = speed;
+Car.prototype.moveLeft = function (distance) {
+    this.speed = distance;
     this.x -= this.speed;
     this.carElement.css({
         left: this.x,
@@ -48,8 +48,8 @@ Car.prototype.moveLeft = function (speed) {
 }
 
 //move the car object 5px to the Down direction 
-Car.prototype.moveDown = function (speed) {
-    this.speed = speed;
+Car.prototype.moveDown = function (distance) {
+    this.speed = distance;
     this.y += this.speed;
     this.carElement.css({
         left: this.x,
@@ -57,8 +57,8 @@ Car.prototype.moveDown = function (speed) {
     });
 }
 
-Car.prototype.moveUp = function (speed) {
-    this.speed = speed;
+Car.prototype.moveUp = function (distance) {
+    this.speed = distance;
     this.y -= this.speed;
     this.carElement.css({
         left: this.x,
@@ -69,6 +69,6 @@ Car.prototype.moveUp = function (speed) {
 
 //initiate a new car object using the Car constructor
 var toyota = new Car(10, 30);
-var bmw = new Car(10, 100);
+var bmw = new Car(10, 100); 
 toyota.draw();
 bmw.draw();
