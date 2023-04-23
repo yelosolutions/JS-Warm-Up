@@ -40,7 +40,6 @@ var updateGameState = (guess, word, answerArray) =>{
             return j;
         }
     }
-           
 }
 
 var showAnswerAndCongratulatePlayer = (answerArray) => {

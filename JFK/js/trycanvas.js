@@ -66,7 +66,7 @@ var drawPoints = function (points) {
     }
 }
 
-drawPoints(mysteryPoints);
+//drawPoints(mysteryPoints);
 
 /*
 drawCxt.beginPath();
@@ -80,3 +80,16 @@ drawCxt.lineTo(70, 120);
 drawCxt.stroke();
 */
 
+
+/**
+ * PAINTING WITH YOUR MOUSE
+Using jQuery and the mousemove event, draw a filled circle with a radius 
+of 3 pixels at the mouse position whenever you move your mouse over the canvas. 
+Because this event is triggered by every tiny movement of the mouse, these 
+circles will join into a line as you move the mouse over the canvas.
+ */
+
+
+$(canvas).mousemove(function (event) {
+    circle(event.offsetX, event.offsetY, 30, true);
+});
