@@ -99,4 +99,4 @@ var bounceBallId = setInterval(function () {
     }
     ctx.strokeRect(0, 0, width , height);
 }, 30);
-//clearInterval(bounceBallId);
+clearInterval(bounceBallId);
