@@ -26,7 +26,7 @@ var circle = function (x, y, radius, filled){
     } else{
         ctx.stroke();
     }
-}
+};
 
 
 //Creating the Ball Constructor
@@ -57,7 +57,7 @@ Ball.prototype.move = function () {
 
 Ball.prototype.draw = function () {
     circle(this.x, this.y, 3, true);
-}
+};
 
 Ball.prototype.setDirection = function(direction) {
     if(direction === 'up'){
