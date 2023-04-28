@@ -198,7 +198,7 @@ var animateBallId = setInterval(function () {
     ctx.strokeRect(0, 0, width, height);
 }, 30);
 
-//clearInterval(animateBallId);
+clearInterval(animateBallId);
 
 /**Running the Code
  * Now our program is complete. When you run the program, you should see a 

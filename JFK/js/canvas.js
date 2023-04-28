@@ -44,6 +44,9 @@ var rectangle4 = ctx.fillRect(150, 260, 10, 50);
 
 ctx.strokeStyle = "grey";
 ctx.lineWidth = 4;
+
+
+
 var square = ctx.strokeRect(290, 130, 20, 20);
 
 

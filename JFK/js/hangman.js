@@ -1,6 +1,34 @@
 /*
     Implements a game that allows players to guess letters of blanked words. 
 */
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+var drawHangman = function (wrongGuesses){
+    ctx.strokeRect(290, 130, 20, 20);
+    ctx.beginPath();
+    if(wrongGuesses === 1){
+        ctx.moveTo(300, 150);
+        ctx.lineTo(300, 210);
+    } else if(wrongGuesses === 2){
+        ctx.moveTo(300, 190);
+        ctx.lineTo(250, 150);
+    }
+    else if(wrongGuesses === 3){
+        ctx.moveTo(300, 190);
+        ctx.lineTo(360, 150);
+    }
+    else if(wrongGuesses === 4){
+        ctx.moveTo(300, 210);
+        ctx.lineTo(250, 280);
+    }
+    else if(wrongGuesses === 5){
+        ctx.moveTo(300, 210);
+        ctx.lineTo(360, 280);
+    }
+    ctx.stroke();
+}
+
 
 //creates an array of words 
 var words = [
@@ -27,7 +55,8 @@ for (var i = 0; i < word.length; i++){
 var remainingLetters = word.length;
 
 //specifies the number of allowed guesses
-var allowedGuesses = 10;
+var allowedGuesses = 50;
+var wrongGuesses = 0;
 
 //the game loop
 while ( remainingLetters > 0 && allowedGuesses > 0){
@@ -43,6 +72,9 @@ while ( remainingLetters > 0 && allowedGuesses > 0){
                 answerArray[j] = guess;
                 remainingLetters--;
                 alert("You have " + remainingLetters + " more blank letters to fill\n");
+            } else if (word[j] !== guess){
+                wrongGuesses++;
+                drawHangman(wrongGuesses);
             }       
         }
         allowedGuesses--;
@@ -50,9 +82,11 @@ while ( remainingLetters > 0 && allowedGuesses > 0){
 //end of game loop
 }
 
+
+
 var playerAnswer = answerArray.join("");
 
-var areAnswersSame = (ans1, ans2) => {
+var areAnswersSame = function (ans1, ans2){
     if (ans1.length !== ans2.length){
         return "The player's answer and the actual word have different sizes.";
     }
