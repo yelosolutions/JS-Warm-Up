@@ -5,28 +5,41 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 var drawHangman = function (wrongGuesses){
-    ctx.strokeRect(290, 130, 20, 20);
-    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'Black';
+    
     if(wrongGuesses === 1){
-        ctx.moveTo(300, 150);
-        ctx.lineTo(300, 210);
+        ctx.strokeRect(20, 10, 20, 20);
     } else if(wrongGuesses === 2){
-        ctx.moveTo(300, 190);
-        ctx.lineTo(250, 150);
-    }
-    else if(wrongGuesses === 3){
-        ctx.moveTo(300, 190);
-        ctx.lineTo(360, 150);
+        ctx.beginPath();
+        ctx.moveTo(30, 30);
+        ctx.lineTo(30, 70);
+    } else if(wrongGuesses === 3){
+        ctx.moveTo(30, 50);
+        ctx.lineTo(10, 40);
     }
     else if(wrongGuesses === 4){
-        ctx.moveTo(300, 210);
-        ctx.lineTo(250, 280);
+        ctx.moveTo(30, 50);
+        ctx.lineTo(50, 40);
     }
     else if(wrongGuesses === 5){
-        ctx.moveTo(300, 210);
-        ctx.lineTo(360, 280);
+        ctx.moveTo(30, 70);
+        ctx.lineTo(10, 100);
+    }
+    else if(wrongGuesses === 6){
+        ctx.moveTo(30, 70);
+        ctx.lineTo(50, 100);
     }
     ctx.stroke();
+};
+
+// draw the current word underneath the hangman
+var drawAnswer = function () {
+    ctx.fillStyle = 'Black';
+    ctx.font = '20px courier';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(playerAnswer , 10, 120);
 }
 
 
@@ -82,9 +95,8 @@ while ( remainingLetters > 0 && allowedGuesses > 0){
 //end of game loop
 }
 
-
-
 var playerAnswer = answerArray.join("");
+drawAnswer();
 
 var areAnswersSame = function (ans1, ans2){
     if (ans1.length !== ans2.length){
