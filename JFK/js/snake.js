@@ -1,4 +1,5 @@
-/**PSEUDOCODE
+/** Creating the classic Snake Game 
+ * PSEUDOCODE
  * Set up the canvas
  * Set score to zero
 
@@ -43,6 +44,12 @@ var update = function (coordinate){
 }
 
 
+//Create block object using a constructor
+var Block = function (col, row){
+    this.col = col;
+    this.row = row;
+};
+
 //Create apple object using a constructor
 var Apple = function (x, y){
     this.x = update(x);
@@ -51,18 +58,15 @@ var Apple = function (x, y){
 
 //Create snake
 var Snake = function (){
-    this.x = width / 2;
-    this.y = height / 2;
-
-    this.xSpeed = 4
-    this.ySpeed = 0;
+    this.segments = [
+        new Block(7, 5),
+        new Block(6, 5),
+        new Block(5, 5)
+    ];
+    this.direction = 'right';
+    this.nextDirection = 'right';
 };
 
-
-//Dividing the Canvas into Blocks
-var blockSize = 10;
-var widthInBlocks = width / blockSize;
-var widthInBlocks = height / blockSize;
 
 //Draws a border around the canvas
 var drawBorder = function () {
@@ -96,6 +100,7 @@ var drawScore = function () {
     ctx.fillText('Current Score: ' + score, blockSize, blockSize);
 };
 
+
 //End the game when the snake hits the wall or runs into itself
 var gameOver = function () {
     //clears the interval and stops the game
@@ -126,40 +131,122 @@ var circle = function (x, y, radius, filled){
         ctx.fill();
     } else{
         ctx.stroke();
-    }
+    };
+};
+
+//var sampleBlock = new Block(10, 10);
+//sampleBlock.drawBlock('blue');
+
+Block.prototype.drawSquare = function (color) {
+    var x = this.col * blockSize;
+    var y = this.row * blockSize;
+    ctx.fillStyle = color;
+
+    ctx.fillRect(x, y, blockSize, blockSize);
 }
 
-Apple.prototype.draw = function () {
-    ctx.fillStyle = 'Green';
-    circle(this.x, this.y, blockSize / 2, true)
-    //ctx.beginPath();
-    //ctx.stroke();
+Block.prototype.drawCircle = function (color) {
+    var centerX = this.col * blockSize + blockSize / 2;
+    var centerY = this.row * blockSize + blockSize / 2;
+    ctx.fillStyle = color;
+
+    circle(centerX, centerY, blockSize / 2, true)
 }
+
+//Adding the equal Method
+Block.prototype.equal = function (otherBlock) {
+    return this.col === otherBlock.col && this.row === otherBlock.row;
+}
+
+// The Apple constructor
+var Apple = function () {
+this.position = new Block(10, 10);
+};
+// Draw a circle at the apple's location
+Apple.prototype.draw = function () {
+this.position.drawCircle("LimeGreen");
+};
+// Move the apple to a new random location
+Apple.prototype.move = function () {
+var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
+var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
+this.position = new Block(randomCol, randomRow);
+};
+
+var apple = new Apple(width, height);
+
 
 Snake.prototype.draw = function () {
-    ctx.fillStyle = 'Blue';
-    ctx.fillRect(this.x, this.y, blockSize, blockSize);
-    //ctx.beginPath();
-    //ctx.stroke();
+    for(var i = 0; i < this.segments.length; i++){
+        this.segments[i].drawSquare('Blue');
+    }
 };
 
 Snake.prototype.move = function () {
-    this.x += this.xSpeed;
-    this.y += this.ySpeed;
+    var head = this.segments[0];
+    this.direction = this.nextDirection;
+    var newHead;
+    
+    if (this.direction === 'right'){
+        newHead = new Block(head.col + 1, head.row);
+    } else if (this.direction === 'left'){
+        newHead = new Block(head.col - 1, head.row);
+    } else if(this.direction === 'up'){
+        newHead = new Block(head.col, head.row - 1);
+    } else if(this.direction === 'down'){
+        newHead = new Block(head.col, head.row + 1);
+    };
 
-    if (this.x < 0 || this.x > width){
+    if(this.checkCollision(newHead)) {
         gameOver();
+        return;
     }
-    if (this.y < 0 || this.y > height){
-        gameOver();
+    this.segments.unshift(newHead);
+
+    if(newHead.equal(apple.position)) {
+        score++;
+        apple.move();
+    } else {
+        this.segments.pop();
     }
 };
 
+var keyActions = {
+    37 : 'left',
+    38 : 'up',
+    39 : 'right',
+    40 : 'down',
+    //13 : 'left',
+    16 : 'stop'
+};
+
+
+Snake.prototype.setDirection = function (direction) {
+    if(direction === 'left'){
+        this.xSpeed = -this.speed;
+        this.ySpeed = 0;
+    } else if(direction === 'right'){
+        this.xSpeed = this.speed;
+        this.ySpeed = 0
+    } else if(direction === 'up'){
+        this.xSpeed = 0;
+        this.ySpeed = -this.speed;
+    } else if(direction === 'down'){
+        this.xSpeed = 0;
+        this.ySpeed = this.speed;
+    } else if(direction === 'stop'){
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+    };
+};
+
+//keyboard events handler
+$('body').keydown(function (event){
+    snake.setDirection(keyActions[event.keyCode]);
+});
 
 
 
-var snake = new Snake();
-var apple = new Apple(width, height);
 
 var intervalID = setInterval(function () {
     //Clear the canvas
@@ -169,7 +256,6 @@ var intervalID = setInterval(function () {
     snake.draw();
     apple.draw();
     drawBorder();
-    score++;
 
 }, 100);
 //clearInterval(intervalID)
