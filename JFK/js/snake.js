@@ -45,12 +45,23 @@ var widthInBlocks = width / blockSize;
 var heightInBlocks = height / blockSize;
 
 
+var drawStickman = function () {
+    ctx.strokeStyle  = 'Black';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(100, 200, 30, 30 );
+    ctx.beginPath();
+    ctx.moveTo(105, 100 );
+    ctx.lineTo(105, 110 );
+    ctx.stroke();
+}
+
+
 //Set score to zero
 var score = 0;
 
 //Draws a border around the canvas
 var drawBorder = function () {
-    ctx.fillStyle = 'Gray';
+    ctx.fillStyle = 'Blue';
     ctx.fillRect(0, 0, width, blockSize);
     ctx.fillRect(0, height - blockSize, width, blockSize);
     ctx.fillRect(0, 0, blockSize, height);
@@ -149,36 +160,6 @@ Block.prototype.equal = function (otherBlock) {
 };
 
 
-/**Creating the Apple
- * The apple is represented as an object with three components: 
-    * a position property, which holds the apple’s position as a block object; 
-    * a draw method, used to draw the apple; and 
-    * a move method, used to give the apple a new position once it’s been eaten 
-    by the snake.
-*/
-//Apple constructor
-var Apple = function () {
-    this.position = new Block(10, 10);
-};
-
-
-
-//Drawing the apple
-Apple.prototype.draw = function () {
-    this.position.drawCircle('Green');
-};
-
-//Moving the apple
-Apple.prototype.move = function () {
-    var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
-    var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
-    this.position = new Block(randomCol, randomRow);
-};
-
-
-
-
-
 
 /**Create the Snake
 The snake’s position will be stored as an array called segments, which will 
@@ -209,13 +190,40 @@ var Snake = function () {
 
 
 
+;
+
+var checkIfOdd = function (index) {
+    for (var i = 0; i < 10; i++) {
+        var even = 2 * i;
+        var odd = 2 * i + 1;
+        if(index === 1 || index === odd){
+            return true;
+        } else if(index === even){
+            return false;
+        };
+    }
+    
+};
+
+
+var colors = ['Red', 'Blue', 'Green'];
+
+var changeColors =  function (index) {
+    if (index < 1){
+        return colors[0];
+    } else if (checkIfOdd(index)) {
+        return colors[1];
+    } else {
+        return colors[2];
+    }
+};
 
 /*add the draw method to the Bsnake constructor prototype, 
 it draws a snake object
 */
-Snake.prototype.draw  = function () {
+Snake.prototype.draw  = function (color) {
     for(var i = 0; i < this.segments.length; i++){
-        this.segments[i].drawSquare('Blue');
+        this.segments[i].drawSquare(changeColors(i));
     }
 };
 
@@ -301,6 +309,36 @@ Snake.prototype.setDirection = function (newDirection) {
     this.nextDirection = newDirection;
 };
 
+
+/**Creating the Apple
+ * The apple is represented as an object with three components: 
+    * a position property, which holds the apple’s position as a block object; 
+    * a draw method, used to draw the apple; and 
+    * a move method, used to give the apple a new position once it’s been eaten 
+    by the snake.
+*/
+//Apple constructor
+var Apple = function () {
+    this.position = new Block(10, 10);
+};
+
+
+
+//Drawing the apple
+Apple.prototype.draw = function () {
+    this.position.drawCircle('Green');
+};
+
+//Moving the apple
+Apple.prototype.move = function () {
+    var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
+    var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
+    this.position = new Block(randomCol, randomRow);
+};
+
+
+
+
 var snake = new Snake();
 var apple = new Apple();
 
@@ -308,6 +346,7 @@ var intervalID = setInterval(function () {
     //Clear the canvas
     ctx.clearRect(0, 0, width, height);
     drawScore();
+    drawStickman();
     snake.move();
     snake.draw();
     apple.draw();
