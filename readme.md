@@ -2,6 +2,9 @@
 This repository has got HTML, CSS, and mainly JavaScript files.
 It contains a solid introduction to Javascript.
 
+Here is a cool snake game that I implemented with JavaScript:
+<img src="./snake.png" width="800" height="800">
+
 
 Other helpful books and websites:
 1. JavaScript: The Good Parts by Douglas Crockford (O’Reilly Media, 2008)
