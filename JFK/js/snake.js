@@ -44,6 +44,8 @@ var blockSize = 10;
 var widthInBlocks = width / blockSize;
 var heightInBlocks = height / blockSize;
 
+var animationTime = 200;
+
 
 
 //Set score to zero
@@ -60,6 +62,8 @@ var drawBorder = function () {
 
 //Draw current score on the canvas
 var drawScore = function () {
+
+    //clearInterval(intervalID);
     //change the size and font of the text
     ctx.font = '20px Courier';
 
@@ -80,7 +84,7 @@ var drawScore = function () {
 //End the game when the snake hits the wall or runs into itself
 var gameOver = function () {
     //clears the interval and stops the game
-    clearInterval(intervalID);
+    clearTimeout();
 
     //change the size and font of the text
     ctx.font = '60px Courier';
@@ -275,6 +279,7 @@ Snake.prototype.move = function () {
 
     if(newHead.equal(apple.position)){
         score++;
+        animationTime -= 20;
         apple.move();
     } else {
         this.segments.pop();
@@ -321,6 +326,7 @@ Apple.prototype.draw = function () {
 
 //Moving the apple
 Apple.prototype.move = function () {
+    //this.position.equal(snake.segments[i])
     var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
     var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
     this.position = new Block(randomCol, randomRow);
@@ -329,9 +335,33 @@ Apple.prototype.move = function () {
 
 
 
+
 var snake = new Snake();
 var apple = new Apple();
 
+
+
+
+function gameLoop() {
+    if(animationTime > 20) {
+        //Clear the canvas
+        ctx.clearRect(0, 0, width, height);
+        drawScore();
+        snake.move();
+        snake.draw();
+        apple.draw();
+        drawBorder();
+    };
+    setTimeout(gameLoop, animationTime);
+};
+
+gameLoop();
+
+//clearTimeout(gameLoop);
+
+
+
+/*
 var intervalID = setInterval(function () {
     //Clear the canvas
     ctx.clearRect(0, 0, width, height);
@@ -343,6 +373,7 @@ var intervalID = setInterval(function () {
 
 }, 100);
 //clearInterval(intervalID)
+*/
 
 
 // Convert keycodes to directions
