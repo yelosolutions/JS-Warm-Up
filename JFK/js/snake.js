@@ -45,23 +45,13 @@ var widthInBlocks = width / blockSize;
 var heightInBlocks = height / blockSize;
 
 
-var drawStickman = function () {
-    ctx.strokeStyle  = 'Black';
-    ctx.lineWidth = 4;
-    ctx.strokeRect(100, 200, 30, 30 );
-    ctx.beginPath();
-    ctx.moveTo(105, 100 );
-    ctx.lineTo(105, 110 );
-    ctx.stroke();
-}
-
 
 //Set score to zero
 var score = 0;
 
 //Draws a border around the canvas
 var drawBorder = function () {
-    ctx.fillStyle = 'Blue';
+    ctx.fillStyle = 'Gray';
     ctx.fillRect(0, 0, width, blockSize);
     ctx.fillRect(0, height - blockSize, width, blockSize);
     ctx.fillRect(0, 0, blockSize, height);
@@ -206,7 +196,7 @@ var checkIfOdd = function (index) {
 };
 
 
-var colors = ['Red', 'Blue', 'Green'];
+var colors = ['Green', 'Blue', 'Gold'];
 
 var changeColors =  function (index) {
     if (index < 1){
@@ -346,7 +336,6 @@ var intervalID = setInterval(function () {
     //Clear the canvas
     ctx.clearRect(0, 0, width, height);
     drawScore();
-    drawStickman();
     snake.move();
     snake.draw();
     apple.draw();
